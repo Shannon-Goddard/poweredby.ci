@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://poweredby.ci/sitemap.xml

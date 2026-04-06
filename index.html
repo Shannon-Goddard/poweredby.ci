@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>poweredby.ci | Verified Cannabis Intelligence & Cultivation Data</title>
+  <meta name="description" content="Traceable, verified cannabis cultivation data. Strain genetics, breeder lineage, and compliance-first seed bank directories built for the 2026 regulatory landscape.">
+  <meta name="author" content="Loyal9 LLC">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://poweredby.ci">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://poweredby.ci">
+  <meta property="og:title" content="poweredby.ci — Cannabis Intelligence Data">
+  <meta property="og:description" content="Every number has a receipt. High-fidelity cannabis data for operators, researchers, and compliance teams.">
+  <meta property="og:image" content="https://poweredby.ci/branding/og-image.png">
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="poweredby.ci — Cannabis Intelligence Data">
+  <meta name="twitter:description" content="Every number has a receipt. High-fidelity cannabis data for operators, researchers, and compliance teams.">
+  <meta name="twitter:image" content="https://poweredby.ci/branding/og-image.png">
+
+  <!-- Preload badge -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="branding/ci-badge-color.svg" as="image" type="image/svg+xml">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "poweredby.ci",
+    "url": "https://poweredby.ci",
+    "logo": "https://poweredby.ci/branding/ci-badge-color.svg",
+    "description": "Verified cannabis cultivation data and compliance intelligence for operators, researchers, and institutional buyers.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Loyal9 LLC",
+      "url": "https://loyal9.app"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #04AA6D;
+      --green-dim: #038a57;
+      --grey: #374151;
+      --grey-light: #6b7280;
+      --grey-dim: #1f2937;
+      --bg: #0a0a0a;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* charge flash overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, #04AA6D22 50%, transparent 100%);
+      transform: translateX(-100%);
+      animation: chargeFlash 0.4s ease-out 1.6s forwards;
+      pointer-events: none;
+    }
+
+    @keyframes chargeFlash {
+      0%   { transform: translateX(-100%); opacity: 1; }
+      100% { transform: translateX(100%);  opacity: 0; }
+    }
+
+    /* ── BADGE SVG ── */
+    .badge-wrap {
+      position: relative;
+      width: 329px;
+      max-width: 90vw;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(1) brightness(0.35);
+      animation: badgeCharge 0.7s ease-out 2s forwards;
+    }
+
+    @keyframes badgeCharge {
+      to { filter: grayscale(0) brightness(1) drop-shadow(0 0 10px #04AA6D88); }
+    }
+
+    /* bolt overlay svg */
+    .bolt-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* lightning bolt */
+    .bolt {
+      fill: #4b5563;
+      opacity: 0;
+      animation: boltStrike 0.15s steps(1) 1.2s forwards, boltFade 0.3s ease-out 1.5s forwards;
+    }
+
+    @keyframes boltStrike {
+      to { opacity: 1; fill: #facc15; filter: drop-shadow(0 0 8px #facc15); }
+    }
+
+    @keyframes boltFade {
+      to { opacity: 0; }
+    }
+
+    /* ── HERO TEXT ── */
+    .hero-domain {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #4b5563;
+      animation: domainLight 0.5s ease-out 2.2s forwards;
+    }
+
+    .hero-domain span { color: var(--green); }
+
+    @keyframes domainLight {
+      to { color: var(--text); }
+    }
+
+    .hero-tagline {
+      margin-top: 0.75rem;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 2.5s forwards;
+    }
+
+    .hero-sub {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #4b5563;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 2.7s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      font-size: 0.75rem;
+      color: #374151;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 3.2s forwards;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, #374151, transparent);
+      margin: 0.5rem auto 0;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease-out 2.9s forwards;
+    }
+
+    .trust-bar span { white-space: nowrap; }
+
+    /* ── SEO CONTENT (visually hidden, crawlable) ── */
+    .seo-content {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+    }
+
+    /* ── GRID SECTION ── */
+    .grid-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    /* ── PRODUCT CARD ── */
+    .card {
+      background: var(--card-bg);
+      padding: 1.75rem;
+      cursor: default;
+      position: relative;
+      transition: background 0.2s;
+      /* scroll reveal */
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card.live {
+      cursor: pointer;
+    }
+
+    .card.live:hover {
+      background: #131f2e;
+    }
+
+    /* left charge bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--grey);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .card.live::before {
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4b5563;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      margin: 0;
+    }
+
+    .card.live .card-title {
+      color: var(--text);
+    }
+
+    .card-status {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      background: #1f2937;
+      color: #374151;
+    }
+
+    .card.live .card-status {
+      background: #052e16;
+      color: var(--green);
+    }
+
+    .card-count {
+      font-size: 0.75rem;
+      color: #374151;
+      margin-bottom: 1rem;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s;
+    }
+
+    .card.live .card-count {
+      color: var(--text-muted);
+    }
+
+    /* expandable description */
+    .card-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .card.open .card-desc {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .card-link:hover { text-decoration: underline; }
+
+    .card-expand-hint {
+      font-size: 0.7rem;
+      color: #374151;
+      margin-top: 0.75rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .card.live .card-expand-hint {
+      color: #4b5563;
+    }
+
+    .card.live:hover .card-expand-hint {
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #374151;
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: #4b5563; text-decoration: none; }
+    footer a:hover { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="badge-wrap">
+    <!-- logo: greyscale on load, charges to full color -->
+    <img class="badge-img" src="branding/ci-badge-color.svg" alt="Powered by Cannabis Intelligence" />
+    <svg class="bolt-svg" viewBox="0 0 329 98" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="bolt" points="185,8 162,48 176,48 150,90 205,45 188,45" />
+    </svg>
+  </div>
+
+  <h1 class="hero-domain">powered<span>by.ci</span></h1>
+  <p class="hero-tagline">
+    Verified cannabis cultivation data for operators, researchers, and compliance teams.
+    Every number has a receipt.
+  </p>
+  <p class="hero-sub">A Loyal9 LLC data product &nbsp;·&nbsp; Cannabis Intelligence</p>
+
+  <div class="trust-bar">
+    <span>● Zero Hallucinations</span>
+    <span>● Traceable Lineage</span>
+    <span>● 2026 Compliance Ready</span>
+    <span>● Source-Verified Archives</span>
+  </div>
+
+  <div class="scroll-hint">explore datasets</div>
+</section>
+
+<!-- SEO crawlable content -->
+<div class="seo-content">
+  <h2>Cannabis Cultivation Data Products</h2>
+  <p>poweredby.ci is a Loyal9 LLC data product providing verified, traceable cannabis cultivation intelligence. Under P.L. 119-37, signed November 12, 2025, the FY 2026 Agriculture Appropriations Act established a Total THC standard — Delta-9 THC plus THCA times 0.877 — fundamentally changing seed legality across the United States effective November 12, 2026. Our seed bank directory cross-references USDA active hemp licensees against state cannabis retail registries to identify dual-licensed bridge entities legally positioned to sell seeds after the law takes effect. Our strain database contains 21,220 verified cannabis strains with full genetics, breeder lineage, grow specifications, and 21,706 timestamped HTML source archives for complete traceability. Data products available for B2B licensing. Contact data@poweredby.ci.</p>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PRODUCT GRID
+══════════════════════════════════════════ -->
+<section class="grid-section">
+  <p class="section-label">Data Products</p>
+
+  <div class="product-grid">
+
+    <!-- STRAINS — live -->
+    <article class="card live" data-href="https://strains.poweredby.ci">
+      <div class="card-header">
+        <h2 class="card-title">Strains</h2>
+        <span class="card-status">Live</span>
+      </div>
+      <div class="card-count">21,220 verified records &nbsp;·&nbsp; 38 fields</div>
+      <div class="card-desc">
+        21,706 timestamped HTML archives → 21,220 production-ready strains.
+        Genetics, grow specs, lineage, breeder identity — all traceable back to the original source.
+        No hallucinations. No trust-me-bro numbers.
+        <a class="card-link" href="https://strains.poweredby.ci" target="_blank">strains.poweredby.ci →</a>
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- SEED BANKS — live -->
+    <article class="card live" data-href="https://seeds.poweredby.ci">
+      <div class="card-header">
+        <h2 class="card-title">Seed Banks</h2>
+        <span class="card-status">Live</span>
+      </div>
+      <div class="card-count">47 states mapped &nbsp;·&nbsp; 3-level verification</div>
+      <div class="card-desc">
+        The only compliance-first seed directory built around P.L. 119-37 — the November 2026 Total THC law.
+        Dual-licensed entities cross-referenced against USDA active lists and state retail registries.
+        <a class="card-link" href="https://seeds.poweredby.ci" target="_blank">seeds.poweredby.ci →</a>
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- LIGHTS — locked -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Lights</h2>
+        <span class="card-status">Pipeline</span>
+      </div>
+      <div class="card-count">—</div>
+      <div class="card-desc">
+        Grow light specifications, PPFD ratings, coverage maps, and manufacturer data.
+        Structured for facility planning and equipment procurement.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- NUTRIENTS — locked -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Nutrients</h2>
+        <span class="card-status">Pipeline</span>
+      </div>
+      <div class="card-count">—</div>
+      <div class="card-desc">
+        NPK ratios, feed schedules, brand cross-references, and compatibility data.
+        Built for cultivation software integrations and agronomic research.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- FANS — locked -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Fans</h2>
+        <span class="card-status">Pipeline</span>
+      </div>
+      <div class="card-count">—</div>
+      <div class="card-desc">
+        Airflow specs, CFM ratings, noise levels, and HVAC compatibility data
+        for controlled environment agriculture.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- MEDIUMS — locked -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Mediums</h2>
+        <span class="card-status">Pipeline</span>
+      </div>
+      <div class="card-count">—</div>
+      <div class="card-desc">
+        Substrate compositions, water retention profiles, pH buffering, and
+        supplier data for soil, coco, rockwool, and hydro systems.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p>© 2026 <a href="https://shannon.loyal9.app" target="_blank">Loyal9 LLC</a> &nbsp;·&nbsp; Shannon Goddard, Single Member Manager &nbsp;·&nbsp; B2B data licensing inquiries: <a href="mailto:shannon@loyal9.app">shannon@loyal9.app</a></p>
+</footer>
+
+
+<script>
+  // ── scroll reveal ──
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => io.observe(c));
+
+  // ── click to expand / navigate ──
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      // close all
+      cards.forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
