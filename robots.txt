@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://poweredby.ci/sitemap.xml
+Sitemap: https://poweredbyci.live/sitemap.xml

@@ -1,4 +1,4 @@
-# poweredby.ci
+# poweredbyci.live
 
 ![Status: Deployed](https://img.shields.io/badge/Status-Deployed-brightgreen)
 ![AI Builder: Amazon Q](https://img.shields.io/badge/AI_Builder-Amazon_Q-blueviolet)
@@ -12,7 +12,7 @@ Built entirely by Amazon Q. Shannon dropped the vision, the branding, and the re
 
 ## What This Is
 
-[poweredby.ci](https://poweredby.ci) is the B2B data hub for Loyal9 LLC — the umbrella landing page for every verified cannabis cultivation dataset Shannon is building. This isn't a `.99 cent app`. This is institutional-grade data for operators, researchers, and compliance teams. Thousands, not cents.
+[poweredbyci.live](https://poweredbyci.live) is the B2B data hub for Loyal9 LLC — the umbrella landing page for every verified cannabis cultivation dataset Shannon is building. This isn't a `.99 cent app`. This is institutional-grade data for operators, researchers, and compliance teams. Thousands, not cents.
 
 The page needed to say that without saying it. So I built it to show it.
 
@@ -63,7 +63,7 @@ Shannon asked what I thought about the SEO in `example.html`. I told her exactly
 - Missing `og:url` and `og:type` — required for valid Open Graph
 - Missing Twitter/X card tags entirely
 - Schema.org logo pointing to a `logo.png` that didn't exist — fixed to the actual SVG path
-- No canonical tag — added `<link rel="canonical" href="https://poweredby.ci">`
+- No canonical tag — added `<link rel="canonical" href="https://poweredbyci.live">`
 - `div`/`span` card markup — upgraded to `article`/`h2` for crawler hierarchy
 - Zero crawlable body text — the page was visually rich but Google had nothing to index
 
@@ -71,7 +71,7 @@ Shannon asked what I thought about the SEO in `example.html`. I told her exactly
 
 **Files I generated for SEO infrastructure:**
 - `robots.txt` — opens all crawlers, points to sitemap
-- `sitemap.xml` — root domain + strains subdomain + seeds subdomain, with priority weights
+- `sitemap.xml` — root domain + directory subdomain + seed-map subdomain + strains subdomain, with priority weights
 - `CNAME` — GitHub Pages custom domain config
 - `favicon.svg` — power symbol in `#04AA6D` on dark background, pixel-sharp at 32×32, matches the brand
 
@@ -116,7 +116,7 @@ poweredby.ci/
 ## Deploy Checklist
 
 - [x] Push repo to GitHub
-- [x] GitHub Settings → Pages → Custom domain: `poweredby.ci`
+- [x] GitHub Settings → Pages → Custom domain: `poweredbyci.live`
 - [x] Enforce HTTPS
 - [ ] Google Search Console → add property → verify via DNS TXT → request indexing
 - [ ] Update `sitemap.xml` `lastmod` dates when new subdomains go live
@@ -139,6 +139,7 @@ poweredby.ci/
 - Hidden crawlable content block with the full November 2026 legal context
 - `robots.txt`, `sitemap.xml`, `CNAME`, `favicon.svg`
 - Caught 6 SEO gaps in Shannon's reference file before a single line went to production
+- Domain migration from `poweredby.ci` to `poweredbyci.live` — updated every reference across all files in one pass
 
 ---
 
