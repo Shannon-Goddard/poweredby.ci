@@ -357,7 +357,7 @@
     }
 
     .card.open .card-desc {
-      max-height: 200px;
+      max-height: 400px;
       opacity: 1;
     }
 
@@ -400,9 +400,147 @@
 
     footer a { color: #4b5563; text-decoration: none; }
     footer a:hover { color: var(--text-muted); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    @media (max-width: 480px) {
+      nav { padding: 0.75rem 1rem; }
+      .nav-logo { font-size: 0.75rem; }
+      .nav-links { gap: 0.75rem; }
+      .nav-links a { font-size: 0.68rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── FLOATING BADGE ── */
+    .float-badge {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 90;
+      width: 80px;
+      opacity: 0.55;
+      transition: opacity 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .float-badge:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .float-badge img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 6px #04AA6D55);
+    }
+
+    /* ── GRID ROW LABELS ── */
+    .row-label {
+      grid-column: 1 / -1;
+      background: var(--bg);
+      padding: 1.25rem 1.75rem 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #374151;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .row-label span {
+      color: var(--green);
+      margin-right: 0.5rem;
+    }
+
+    /* ── CARD ACTIONS (dropdown) ── */
+    .card-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-action {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    .card-action:hover { color: var(--green); }
+
+    .card-action svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">powered<span>byci.live</span></a>
+  <ul class="nav-links">
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="mailto:shannon@loyal9.app">Contact</a></li>
+  </ul>
+</nav>
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -419,10 +557,10 @@
 
   <h1 class="hero-domain">powered<span>byci.live</span></h1>
   <p class="hero-tagline">
-    Verified cannabis cultivation data for operators, researchers, and compliance teams.
+    Free tools for growers. Verified data for the industry.<br>
     Every number has a receipt.
   </p>
-  <p class="hero-sub">A Loyal9 LLC data product &nbsp;·&nbsp; loyal9.app</p>
+  <p class="hero-sub">Loyal9 LLC &nbsp;·&nbsp; We Pass Them Left, Then Watch the Industry Blink.</p>
 
   <div class="trust-bar">
     <span>● Zero Hallucinations</span>
@@ -431,7 +569,7 @@
     <span>● Source-Verified Archives</span>
   </div>
 
-  <div class="scroll-hint">explore datasets</div>
+  <div class="scroll-hint">explore tools &amp; data</div>
 </section>
 
 <!-- SEO crawlable content -->
@@ -445,57 +583,105 @@
      PRODUCT GRID
 ══════════════════════════════════════════ -->
 <section class="grid-section">
-  <p class="section-label">Data Products</p>
+  <p class="section-label">Tools &amp; Data &nbsp;·&nbsp; poweredbyci.live</p>
 
   <div class="product-grid">
 
+    <!-- ROW LABEL: TOOLS -->
+    <div class="row-label" id="tools"><span>&#9889;</span>Free Tools for Growers</div>
+
+    <!-- SEED MAP — live -->
+    <article class="card live">
+      <div class="card-header">
+        <h2 class="card-title">Seed Map</h2>
+        <span class="card-status">Live</span>
+      </div>
+      <div class="card-count">763 locations &nbsp;·&nbsp; 27+ states &nbsp;·&nbsp; 924 breeders</div>
+      <div class="card-desc">
+        Find seeds available in your state right now. Interactive map of breeders, seed banks, and dispensaries — filter by location or search by breeder name. Know what genetics are legal and local before November 2026 changes everything.
+        <a class="card-link" href="https://seed-map.poweredbyci.live" target="_blank">seed-map.poweredbyci.live →</a>
+        <div class="card-actions">
+          <a class="card-action" href="https://github.com/Shannon-Goddard/seed-map-usa" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Steal the code
+          </a>
+          <a class="card-action" href="mailto:shannon@loyal9.app">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Get the data
+          </a>
+        </div>
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- LIGHTING CALCULATOR — live -->
+    <article class="card live">
+      <div class="card-header">
+        <h2 class="card-title">Lighting Calculator</h2>
+        <span class="card-status">Live</span>
+      </div>
+      <div class="card-count">140 lights &nbsp;·&nbsp; full cycle cost &nbsp;·&nbsp; your electricity rate</div>
+      <div class="card-desc">
+        See exactly what your grow will cost to run before you buy a single light. Enter your zip code's electricity rate, pick your lights, set your cycle — get the real number. 140 fixtures with verified wattage data.
+        <a class="card-link" href="https://lighting.poweredbyci.live" target="_blank">lighting.poweredbyci.live →</a>
+        <div class="card-actions">
+          <a class="card-action" href="https://github.com/Shannon-Goddard" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Steal the code
+          </a>
+          <a class="card-action" href="mailto:shannon@loyal9.app">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Get the data
+          </a>
+        </div>
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- ROW LABEL: DATA -->
+    <div class="row-label" id="data"><span>&#9632;</span>Verified Data Products</div>
+
     <!-- SEED BANKS — live -->
-    <article class="card live" data-href="https://directory.poweredbyci.live">
+    <article class="card live">
       <div class="card-header">
         <h2 class="card-title">Seed Banks</h2>
         <span class="card-status">Live</span>
       </div>
       <div class="card-count">47 states mapped &nbsp;·&nbsp; 3-level verification</div>
       <div class="card-desc">
-        The only compliance-first seed directory built around P.L. 119-37 — the November 2026 Total THC law.
-        Dual-licensed entities cross-referenced against USDA active lists and state retail registries.
+        Compliance-first seed bank directory built around P.L. 119-37 — the November 2026 Total THC law. Dual-licensed entities cross-referenced against USDA active lists and state retail registries. The only directory that will still be accurate after the law takes effect.
         <a class="card-link" href="https://directory.poweredbyci.live" target="_blank">directory.poweredbyci.live →</a>
-      </div>
-      <div class="card-expand-hint">click to expand</div>
-    </article>
-
-    <!-- SEED MAP — live -->
-    <article class="card live" data-href="https://seed-map.poweredbyci.live">
-      <div class="card-header">
-        <h2 class="card-title">Seed Map</h2>
-        <span class="card-status">Live</span>
-      </div>
-      <div class="card-count">1,039 entries &nbsp;·&nbsp; 763 geocoded pins &nbsp;·&nbsp; 924 breeders</div>
-      <div class="card-desc">
-        Interactive map of cannabis seed breeders, seed banks, dispensaries, and cultivators across 27+ states.
-        Dual-mode UI — filter by location or by breeder. 700+ brand logos. AWS-backed with session auth.
-        <a class="card-link" href="https://seed-map.poweredbyci.live" target="_blank">seed-map.poweredbyci.live →</a>
+        <div class="card-actions">
+          <a class="card-action" href="mailto:shannon@loyal9.app">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Get the data
+          </a>
+        </div>
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
 
     <!-- STRAINS — active -->
-    <article class="card live" data-href="https://strains.poweredbyci.live">
+    <article class="card live">
       <div class="card-header">
         <h2 class="card-title">Strains</h2>
         <span class="card-status">Active</span>
       </div>
       <div class="card-count">21,220 verified records &nbsp;·&nbsp; 38 fields</div>
       <div class="card-desc">
-        21,706 timestamped HTML archives → 21,220 production-ready strains.
-        Genetics, grow specs, lineage, breeder identity — all traceable back to the original source.
-        No hallucinations. No trust-me-bro numbers.
+        21,706 timestamped HTML archives → 21,220 production-ready strains. Genetics, grow specs, lineage, breeder identity — all traceable back to the original source. No hallucinations. No trust-me-bro numbers.
         <a class="card-link" href="https://strains.poweredbyci.live" target="_blank">strains.poweredbyci.live →</a>
+        <div class="card-actions">
+          <a class="card-action" href="mailto:shannon@loyal9.app">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Get the data
+          </a>
+        </div>
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
 
-    <!-- LIGHTS — locked -->
+    <!-- LIGHTS — pipeline -->
     <article class="card locked">
       <div class="card-header">
         <h2 class="card-title">Lights</h2>
@@ -503,13 +689,12 @@
       </div>
       <div class="card-count">—</div>
       <div class="card-desc">
-        Grow light specifications, PPFD ratings, coverage maps, and manufacturer data.
-        Structured for facility planning and equipment procurement.
+        Grow light specifications, PPFD ratings, coverage maps, and manufacturer data. Structured for facility planning and equipment procurement.
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
 
-    <!-- NUTRIENTS — locked -->
+    <!-- NUTRIENTS — pipeline -->
     <article class="card locked">
       <div class="card-header">
         <h2 class="card-title">Nutrients</h2>
@@ -517,13 +702,12 @@
       </div>
       <div class="card-count">—</div>
       <div class="card-desc">
-        NPK ratios, feed schedules, brand cross-references, and compatibility data.
-        Built for cultivation software integrations and agronomic research.
+        NPK ratios, feed schedules, brand cross-references, and compatibility data. Built for cultivation software integrations and agronomic research.
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
 
-    <!-- FANS — locked -->
+    <!-- FANS — pipeline -->
     <article class="card locked">
       <div class="card-header">
         <h2 class="card-title">Fans</h2>
@@ -531,13 +715,12 @@
       </div>
       <div class="card-count">—</div>
       <div class="card-desc">
-        Airflow specs, CFM ratings, noise levels, and HVAC compatibility data
-        for controlled environment agriculture.
+        Airflow specs, CFM ratings, noise levels, and HVAC compatibility data for controlled environment agriculture.
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
 
-    <!-- MEDIUMS — locked -->
+    <!-- MEDIUMS — pipeline -->
     <article class="card locked">
       <div class="card-header">
         <h2 class="card-title">Mediums</h2>
@@ -545,8 +728,44 @@
       </div>
       <div class="card-count">—</div>
       <div class="card-desc">
-        Substrate compositions, water retention profiles, pH buffering, and
-        supplier data for soil, coco, rockwool, and hydro systems.
+        Substrate compositions, water retention profiles, pH buffering, and supplier data for soil, coco, rockwool, and hydro systems.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- ROW LABEL: ROADMAP -->
+    <div class="row-label" id="roadmap"><span>&#9670;</span>What This Data Builds</div>
+
+    <!-- GROW APP — roadmap -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Grow App</h2>
+        <span class="card-status">Building</span>
+      </div>
+      <div class="card-count">IoT sync &nbsp;·&nbsp; automated diary &nbsp;·&nbsp; Grow Passport</div>
+      <div class="card-desc">
+        A full-cycle cultivation companion built on top of every dataset on this page. Log your grow, sync your environment sensors, track VPD, PPFD, EC, and pH in real time. Every photo you take gets tagged with structured metadata — strain, stage, conditions, problem labels — and stored as ground truth.
+        <br><br>
+        The Grow Passport is the feature: a shareable QR code with your full harvest provenance. Genetics, environment, inputs, timeline. Scan it and know exactly what you grew and how you grew it.
+        <br><br>
+        This app doesn't just help growers. Every structured data point it collects trains what comes next.
+      </div>
+      <div class="card-expand-hint">click to expand</div>
+    </article>
+
+    <!-- PLANT VISION AI — roadmap -->
+    <article class="card locked">
+      <div class="card-header">
+        <h2 class="card-title">Plant Vision AI</h2>
+        <span class="card-status">Building</span>
+      </div>
+      <div class="card-count">drop a photo &nbsp;·&nbsp; get the answer</div>
+      <div class="card-desc">
+        Drop a photo of your plant. Get everything — strain identification, deficiency diagnosis, pest detection, stage classification, harvest readiness. No guessing. No forum rabbit holes.
+        <br><br>
+        This model is trained exclusively on labeled, structured, source-verified grow data. Not scraped internet images. Not synthetic data. Real grows, real conditions, real outcomes — tagged by the Grow App at every stage of the cycle.
+        <br><br>
+        The data on this page builds the Grow App. The Grow App builds this. That's the whole play.
       </div>
       <div class="card-expand-hint">click to expand</div>
     </article>
@@ -562,6 +781,11 @@
   <p>© 2026 <a href="https://shannon.loyal9.app" target="_blank">Loyal9 LLC</a> &nbsp;·&nbsp; Shannon Goddard, Single Member Manager &nbsp;·&nbsp; B2B data licensing inquiries: <a href="mailto:shannon@loyal9.app">shannon@loyal9.app</a></p>
 </footer>
 
+
+<!-- FLOATING BADGE -->
+<a class="float-badge" href="#" aria-label="Back to top">
+  <img src="branding/ci-badge-color.svg" alt="poweredbyci.live" />
+</a>
 
 <script>
   // ── scroll reveal ──
